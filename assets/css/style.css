@@ -1,0 +1,805 @@
+/*
+Theme Name curry_yotsubashi
+Author: meganeiro
+Description: 四ツ橋カレー激戦区のカスタムテーマ
+Version: 1.0
+Text Domain: curry_yotsubashi221016
+*/
+
+
+/***
+    The new CSS reset - version 1.5.1 (last updated 1.3.2022)
+    GitHub page: https://github.com/elad2412/the-new-css-reset
+***/
+
+/*
+    Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property
+    - The "symbol *" part is to solve Firefox SVG sprite bug
+ */
+ *:where(:not(iframe, canvas, img, svg, video):not(svg *, symbol *)) {
+    all: unset;
+    display: revert;
+}
+
+/* Preferred box-sizing value */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Reapply the pointer cursor for anchor tags */
+a, button {
+    cursor: revert;
+}
+
+/* Remove list styles (bullets/numbers) */
+ol, ul, menu {
+    list-style: none;
+}
+
+/* For images to not be able to exceed their container */
+img {
+    max-width: 100%;
+}
+
+/* removes spacing between cells in tables */
+table {
+    border-collapse: collapse;
+}
+
+/* revert the 'white-space' property for textarea elements on Safari */
+textarea {
+    white-space: revert;
+}
+
+/* minimum style to allow to style meter element */
+meter {
+    -webkit-appearance: revert;
+    appearance: revert;
+}
+
+/* reset default text opacity of input placeholder */
+::placeholder {
+    color: unset;
+}
+
+/* fix the feature of 'hidden' attribute.
+   display:revert; revert to element instead of attribute */
+:where([hidden]) {
+    display: none;
+}
+
+/* revert for bug in Chromium browsers
+   - fix for the content editable attribute will work properly. */
+:where([contenteditable]) {
+    -moz-user-modify: read-write;
+    -webkit-user-modify: read-write;
+    overflow-wrap: break-word;
+    -webkit-line-break: after-white-space;
+}
+
+/* apply back the draggable feature - exist only in Chromium and Safari */
+:where([draggable="true"]) {
+    -webkit-user-drag: element;
+}
+
+/*---------------------------------------------------------------------------------------------------------*/
+
+/* フォント */
+@font-face {
+	font-family: 'ほのか新丸ゴシック';
+	src: url(/assets/font/Honoka-Shin-Maru-Gothic_R.otf);
+}
+
+body {
+	font-family:'筑紫B丸ゴシック','ほのか新丸ゴシック','sans-serif';
+	font-size: 62.5%;
+	line-height: 1.8;
+	background-color: #4C212A;
+	padding: 20px;
+	position: relative;
+	width: 100%;
+}
+
+article {
+	padding: 15px;
+	width: 100%;
+	margin: 40px 0;
+	border: solid 2px #4C212A;
+	background-color: #fff;
+}
+
+li {
+	list-style: none;
+}
+
+a {
+	display: block;
+}
+
+article#first {
+	border: solid 2px #4C212A;
+	background-color: #EFDCC5;
+	margin: 10px 0;
+	width: 100%;
+	height: 100vh;
+}
+
+article section {
+	border: solid 2px #4C212A;
+	height: 100%;
+}
+
+
+
+div#logo {
+	padding: 10px 9px;
+	background-color: #fff;
+	width: 22rem;
+	top: 0;
+	left: 0;
+	position: absolute;
+	display: flex;
+	flex-direction: row;
+	z-index: 100;
+}
+
+div#logo h1 {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	font-size: 27px;
+	color: #4C212A;
+}
+
+div#logo h1 img {
+	align-items: center;
+	margin-left: 0.5rem;
+	width: 80px;
+	height: 38px;
+}
+
+/****************** スライドメニュー *******************/
+nav {
+	display: none;
+	position:fixed;
+	top: 0;
+	right: 0;
+	z-index: 500;
+}
+
+nav ul.slide_menu {
+	width: 100vw;
+	background-color: #EFDCC5;
+}
+
+nav ul.slide_menu li {
+	text-align: center;
+	font-size: 20px;
+	padding: 15px 0;
+}
+
+nav.active {
+	display: block;
+}
+
+/* swiper */
+
+.swiper-button-prev:after, .swiper-rtl .swiper-button-next:after {
+	display: none;
+}
+
+.swiper-button-next:after, .swiper-rtl .swiper-button-prev:after {
+	display: none;
+}
+
+/*************** ハンバーガー ***************/
+
+.btn-trigger {
+	position: relative;
+	width: 50px;
+	height: 44px;
+	cursor: pointer;
+}
+
+.btn-trigger span {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	height: 4px;
+	background-color: #4C212A;
+	border-radius: 4px;
+}
+
+.btn-trigger, .btn-trigger span {
+	display: inline-block;
+	transition: all .5s;
+	box-sizing: border-box;
+}
+
+.btn-trigger span:nth-of-type(1) {
+	top: 0;
+}
+
+.btn-trigger span:nth-of-type(2) {
+	top: 20px;
+}
+
+.btn-trigger span:nth-of-type(3) {
+	bottom: 0;
+}
+
+#btn17.btn-trigger {
+	position: fixed;
+	z-index: 600;
+	right: 58px;
+	top: 7%;
+	width: 48px;
+	height: 48px;
+}
+
+#btn17.btn-trigger span {
+	position: absolute;
+	width: 3rem;
+	height: 6px;
+	border-radius: 4px;
+	background-color: #fe4e00;
+}
+
+#btn17.btn-trigger span:nth-of-type(1) {
+	top: 1.1rem;
+}
+
+#btn17.btn-trigger span:nth-of-type(2) {
+	top: 2rem;
+}
+
+#btn17.btn-trigger span:nth-of-type(3) {
+	top: 2.9rem;
+}
+
+#btn17::after {
+	position: absolute;
+	top: 50px;
+	left: 34px;
+	display: block;
+	content: '';
+	width: 70px;
+	height: 70px;
+	margin: -45px 0 0 -45px;
+	border-radius: 50%;
+	border: 4px solid rgba(255, 255, 255, 0);
+	transition: all .75s;
+}
+
+#btn17.active span:nth-of-type(1) {
+	-webkit-transform: translateY(20px) rotate(45deg);
+	transform: translateY(20px) rotate(45deg);
+}
+
+#btn17.active span:nth-of-type(2) {
+	left: 60%;
+	opacity: 0;
+	-webkit-animation: active-btn17-bar02 .8s forwards;
+	animation: active-btn17-bar02 .8s forwards;
+}
+
+@-webkit-keyframes active-btn17-bar02 {
+	100% {
+		height: 0;
+	}
+}
+
+@keyframes active-btn17-bar02 {
+	100% {
+		height: 0;
+	}
+}
+
+#btn17.active span:nth-of-type(3) {
+	-webkit-transform: translateY(-20px) rotate(-45deg);
+	transform: translateY(-8px) rotate(-45deg);
+}
+#btn17.active::after {
+	border: 4px solid #fe4e00;
+}
+
+/* swiper */
+article#first section#drop-target {
+	border: solid 2px #4C212A;
+	width: auto;
+	display: flex;
+	align-items: center;
+}
+
+article#first section#drop-target div.swiper {
+	width: 100%;
+	height: 100vh;
+	position: relative;
+}
+
+article section#drop-target div.swiper ul.swiper-wrapper {
+	position: relative;
+	width: 100px;
+	height: 400px;
+	margin: 143px auto;
+	padding: 0;
+	animation: rotate 30s linear infinite;
+	transform: none;
+	z-index: 10;
+}
+@keyframes rotate {
+	100% { transform: rotate(360deg); }
+}
+
+article section#drop-target div.swiper ul.swiper-wrapper li.swiper-slide {
+	position: absolute;
+	width: 200px;
+	height: 200px;
+	margin: 0;
+	color: #fff;
+	box-sizing: border-box;
+	background-size: cover;
+	transform: none;
+	border-radius: 50%;
+	animation: rotate-elm 30s linear infinite;
+	padding: 30px 0 0;
+	box-sizing: border-box;
+}
+@keyframes rotate-elm {
+	100% { transform: rotate(-360deg); }
+}
+
+
+article section#drop-target div.swiper ul.swiper-wrapper li.swiper-slide a {
+	position: relative;
+	height: initial;
+}
+
+/* ファーストビュー */
+article section#drop-target div.swiper ul.swiper-wrapper li#item-1.swiper-slide {
+	background-image: url("../image/chaos_281_en.jpg");
+	top: -80px;
+	right: 160px;
+}
+
+article section#drop-target div.swiper ul.swiper-wrapper li#item-2.swiper-slide {
+	background-image: url("../image/yellowspice_281_en.jpg");
+	left: -350px;
+	bottom: 100px;
+}
+
+article section#drop-target div.swiper ul.swiper-wrapper li#item-3.swiper-slide {
+	background-image: url("../image/shigeru_281_en.jpg");
+	top: 350px;
+	left: -50px;
+}
+
+article section#drop-target div.swiper ul.swiper-wrapper li#item-4.swiper-slide {
+	background-image: url("../image/devi_281_en.jpg");
+	bottom: -80px;
+	right: -260px;
+}
+
+article section#drop-target div.swiper ul.swiper-wrapper li#item-5.swiper-slide {
+	background-image: url("../image/bonabona_281_en.jpg");
+	right: -350px;
+	bottom: 100px;
+}
+
+article section#drop-target div.swiper ul.swiper-wrapper li#item-6.swiper-slide {
+	background-image: url("../image/lakshimi_281_en.jpg");
+	top: -150px;
+	left: -50px;
+}
+
+article section#drop-target div.swiper ul.swiper-wrapper li#item-7.swiper-slide {
+	background-image: url("../image/bindu_281_en.jpg");
+	bottom: -80px;
+	right: 160px;
+}
+
+article section#drop-target div.swiper ul.swiper-wrapper li#item-8.swiper-slide {
+	background-image: url("../image/condor_281_en.jpg");
+	background-color: #4C212A;
+	top: -80px;
+	left: 160px;
+}
+
+
+article section#drop-target div.swiper ul.swiper-wrapper li.swiper-slide a p {
+	position: absolute;
+	color: #fff;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	height: max-content;
+	text-align: center;
+	display: grid;
+	z-index: 250;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+/* 皿 */
+article#first section#drop-target div.dish_b {
+	width: 86%;
+	height: 86%;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: #fff;
+	border: solid 2px #4C212A;
+	margin: auto;
+	position: absolute;
+	border-radius: 50%;
+}
+
+/* お皿 */
+article#first section#drop-target div.dish_b div.dish_s {
+	border: solid 2px #4C212A;
+	background-color: #fff;
+	width: 80%;
+	height: 80%;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+	position: absolute;
+	border-radius: 50%;
+}
+
+article section#about {
+	background-color: #fff;
+	height: 100%;
+}
+
+article section#about div {
+	width: 52vw;
+	margin: 20px auto;
+}
+
+article section#about span {
+	display: flex;
+	flex-direction: row;
+	width: auto;
+	align-items: center;
+	padding: 0 40px;
+	margin-top: 15px;
+	border-bottom: 5px solid #4C212A;
+	border-radius: 20px;
+	justify-content: center;
+}
+
+article section#about span h2 {
+	color: #4C212A;
+	font-size: 3em;
+	font-weight: 600;
+}
+
+article section#about span img {
+	width: 80px;
+	height: 53px;
+}
+
+article section#about ul {
+	padding: 0 20px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+article section#about ul li {
+	width: 45%;
+	font-size: 2em;
+	margin: 10px auto;
+	color: #504C4C;
+}
+
+article section#about ul li img {
+	width: auto;
+}
+
+article section#about ul li:last-child {
+	width: 100%;
+}
+
+article section#about ul li:last-child p {
+	text-align: end;
+	padding: 0 20px 10px 0;
+	color: #4C212A;
+}
+
+article section div#left {
+	background-color: #fff;
+	display: flex;
+	width: auto;
+}
+
+article section div img {
+	width: 57%;
+}
+
+article section div#right {
+	background-color: #fff;
+	display: flex;
+	flex-direction: row-reverse;
+	width: auto;
+}
+
+article section div#right ul {
+	width: 44%;
+	/*height: 600px;*/
+	background-color: #EFDCC5;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+article section div#left ul {
+	width: 44%;
+	/*height: 600px;*/
+	background-color: #EFDCC5;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+/* 店名 */
+article section div ul li:first-child {
+	width: 82%;
+	margin: 25px auto 0;
+}
+
+article section div ul li span {
+	display: block;
+}
+
+article section div ul li h3 {
+	font-size: 30px;
+	font-weight: bold;
+	text-align: center;
+}
+
+article section div ul li:nth-child(2) {
+	font-size: 2em;
+	word-break: break-all;
+	padding: 15px 30px;
+}
+
+article section div ul li:nth-child(3) {
+	padding: 0 30px;
+	font-size: 4em;
+}
+
+article section div ul li:nth-child(3) a {
+	display: initial;
+	margin-right: 15px;
+}
+
+/********************** footer *********************/
+
+footer article section {
+	display: flex;
+	width: auto;
+	height: 55vh;
+	font-size: 20px;
+	position: relative;
+}
+
+footer article section ul.shoplist {
+	width: 70%;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+
+footer article section ul.shoplist li {
+	padding: 15px;
+	color: #4C212A;
+}
+
+footer article section ul.shoplist li span {
+	display: block;
+}
+
+footer article section ul.profile {
+	width: auto;
+	position: absolute;
+	margin: 20px;
+	bottom: 0;
+	right: 0;
+}
+
+footer article section ul.profile li:last-child {
+	display: flex;
+}
+
+footer article section ul.profile li:last-child a i {
+	font-size: 30px;
+	padding: 10px 15px 0 0;
+}
+
+/**************** modal *****************/
+
+div#item-1_modal {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	background-color: rgba(0,80,120,0.5);
+	z-index: 300;
+}
+
+/* itemId各種ページ */
+body#item {
+	background-color: rgba(47, 64, 65, 0.5);
+}
+
+iframe#instagram-embed-0,iframe.instagram-media.instagram-media-rendered {
+	margin: 0 auto !important;
+}
+
+.swiper-pagination,.swiper-button-prev,.swiper-button-next {
+	display: none;
+}
+
+/**************** mediaQuery *******************/
+
+@media (max-width:1023px) {
+
+	/* 四ツ橋カレー激戦区って？ */
+	article section#about span h2 {
+		font-size: 1.9em;
+	}
+	/* コメント */
+	article section#about ul li {
+		font-size: 1.6em;
+	}
+
+	/* お店の名前 */
+	article section div ul li h3 {
+		font-size: 23px;
+	}
+	/* コメント */
+	article section div ul li:nth-child(2){
+		font-size: 1.6em;
+		padding: 10px 30px;
+	}
+
+	article section div ul li:first-child {
+		width: 85%;
+	}
+}
+
+/* タブレット以上 */
+@media (min-width: 769px) {
+	.swiper-android .swiper-slide, .swiper-wrapper {
+		transform: none;
+	}
+}
+
+/* タブレットサイズ */
+@media (max-width: 768px) {
+
+	/* 四ツ橋カレー激戦区 */
+	article section#about ul {
+		display: contents;
+	}
+
+	article section#about div {
+		width: 78vw;
+	}
+
+	article section#about ul li {
+		width: 84vw;
+		padding: 10px 15px;
+		margin: 0;
+	}
+	/* チャイの写真消す */
+	article section#about ul li:nth-child(2) {
+		display: none;
+	}
+
+	/* flexを解く */
+	article section div#left {
+		display: block;
+		background-color: #EFDCC5;
+	}
+
+	article section div img {
+		width: 100%;
+	}
+
+	article section div#left ul {
+		width: 100%;
+		height: auto;
+		position: initial;
+	}
+
+	article section div#right {
+		display: block;
+		background-color: #EFDCC5;
+	}
+
+	article section div#right ul {
+		width: 100%;
+		height: auto;
+		position: initial;
+	}
+
+	article section div ul li:first-child {
+		margin: 25px auto;
+	}
+
+	/* footer */
+	footer article section {
+		display: block;
+		height: auto;
+	}
+
+	footer article section ul.shoplist {
+		display: block;
+		width: 100%;
+	}
+
+	footer article section ul.shoplist li span {
+		display: revert;
+	}
+
+	/* ハンバーガーメニュー */
+	#btn17.btn-trigger {
+		opacity: 0.8;
+	}
+
+	#btn17.btn-trigger span {
+		background-color: #fe4e00;
+	}
+
+	#btn17.active::after {
+		border: 4px solid #fe4e00;
+	}
+
+	/* Swiper */
+	article#first section#drop-target {
+		display: block;
+	}
+
+	article section#drop-target div.swiper ul.swiper-wrapper {
+		margin: 38vh auto;
+		animation: none;
+		width: auto;
+	}
+
+	article section#drop-target div.swiper ul.swiper-wrapper li.swiper-slide {
+		position: initial;
+		animation: none;
+		height: 83%;
+	}
+
+	.swiper-pagination,.swiper-button-prev,.swiper-button-next {
+		display: block;
+
+	}
+
+	.swiper-button-prev:after, .swiper-rtl .swiper-button-next:after {
+		display: block;
+		color: #fe4e00;
+	}
+
+	.swiper-button-next:after, .swiper-rtl .swiper-button-prev:after {
+		display: block;
+		color: #fe4e00;
+	}
+
+	.swiper-button-next.swiper-button-disabled, .swiper-button-prev.swiper-button-disabled {
+		opacity: initial !important;
+	}
+}
+
+
